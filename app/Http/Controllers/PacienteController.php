@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Paciente;
 
+use App\Http\Resources\PacienteResource;
+
 class PacienteController extends Controller
 {
     /**
@@ -34,7 +36,7 @@ class PacienteController extends Controller
       $paciente->endereco = $request->endereco;
       $paciente->numeroDoPlano = $request->numeroDoPlano;
       $paciente->save();
-      return response()->json([$paciente]);
+      return new PacienteResource($paciente);
     }
 
     /**
@@ -71,7 +73,8 @@ class PacienteController extends Controller
         $paciente->endereco = $request->endereco;
       if($request->numeroDoPlano)
         $paciente->numeroDoPlano = $request->numeroDoPlano;
-      return response()->json([$paciente]);
+      $paciente->save();
+      return new PacienteResource($paciente);
     }
 
     /**

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Consulta;
 
+use App\Http\Resources\ConsultaResource;
+
 class ConsultaController extends Controller
 {
     /**
@@ -34,7 +36,7 @@ class ConsultaController extends Controller
       $consulta->idPaciente = $request->idPaciente;
       $consulta->idMedico = $request->idMedico;
       $consulta->save();
-      return response()->json([$consulta]);
+      return new ConsultaResource($consulta);
 
     }
 
@@ -72,7 +74,8 @@ class ConsultaController extends Controller
         $consulta->idPaciente = $request->idPaciente;
       if($request->idMedico)
         $consulta->idMedico = $request->idMedico;
-      return response()->json([$consulta]);
+      $consulta->save();
+      return new ConsultaResource($consulta);
     }
 
     /**

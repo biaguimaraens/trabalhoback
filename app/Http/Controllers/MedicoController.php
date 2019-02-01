@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Medico;
 
+use App\Http\Resources\MedicoResource;
+
 class MedicoController extends Controller
 {
     /**
@@ -35,7 +37,7 @@ class MedicoController extends Controller
       $medico->tipoDeEspecializacao = $request->tipoDeEspecializacao;
       $medico->numeroCRM = $request->numeroCRM;
       $medico->save();
-      return response()->json([$medico]);
+      return new MedicoResource($medico);
     }
 
     /**
@@ -74,7 +76,8 @@ class MedicoController extends Controller
         $medico->tipoDeEspecializacao = $request->tipoDeEspecializacao;
       if($request->numeroCRM)
         $medico->numeroCRM = $request->numeroCRM;
-      return response()->json([$medico]);
+      $medico->save();
+      return new MedicoResource($medico);
     }
 
     /**
