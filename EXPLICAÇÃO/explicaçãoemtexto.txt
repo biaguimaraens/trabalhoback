@@ -1,0 +1,2 @@
+[Processo de marcar consultas médicas online]
+O paciente interessado numa consulta, utiliza o site e cadastra telefone, data de nascimento, nome, cpf, endereco e número do plano. Ao encontrar o médico que lhe agrada no banco de dados, ele solicita uma consulta que tem os atributos de sala, endereço, horário e data. Com essas informações, é possível que o médico (com telefone, data de nascimento, nome, cpf, endereco, tipo de especialização e numero de CRM) se disponibilize para realizar a consulta.
